@@ -54,6 +54,7 @@ html {
 
 body {
   background-color: var(--primary-color);
+  color: var(--dark-color);
 }
 
 h1 {
@@ -76,6 +77,90 @@ a,
 button {
   font-size: var(--ty-size-p);
   font-weight: 500;
+}
+
+
+/* MAIN STYLE */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-7);
+}
+
+.calculator {
+  background-color: var(--light-color);
+  height: 500px;
+  min-width: 300px;
+  width: clamp(300px, 20%, 350px);
+  border-radius: 12px;
+}
+
+/* Header style */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: var(--spacing-4);
+  padding-top: var(--spacing-2);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.icon ion-icon {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Input container styles */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: var(--spacing-6) var(--spacing-6) var(--spacing-3) var(--spacing-6);
+}
+
+.progress {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: var(--spacing-1);
+  color: var(--light-gray);
+}
+
+.user-input {
+  background-color: var(--light-color);
+  height: 40px;
+  font-size: 35px;
+  font-weight: 300;
+}
+
+/* Numpad Container */
+.numpad-container {
+  display: flex;
+  margin: var(--spacing-5);
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.numpad-container .input {
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 300;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.operator {
+  color: var(--primary-color);
 }
 
 /* Media queries - From Desktop to Mobile */
