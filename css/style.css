@@ -57,6 +57,10 @@ body {
   color: var(--dark-color);
 }
 
+body.dark {
+  background-color: var(--secondary-color);
+}
+
 h1 {
   font-size: var(--ty-size-h1);
   font-weight: 700;
@@ -96,6 +100,11 @@ button {
   border-radius: 12px;
 }
 
+body.dark .calculator {
+  background-color: var(--dark-color);
+  color: var(--light-color)
+}
+
 /* Header style */
 .header-container {
   display: flex;
@@ -108,6 +117,10 @@ button {
 .title {
   font-size: 18px;
   font-weight: 400;
+}
+
+.icon {
+  cursor: pointer;
 }
 
 .icon ion-icon {
@@ -123,6 +136,7 @@ button {
   padding: var(--spacing-6) var(--spacing-6) var(--spacing-3) var(--spacing-6);
 }
 
+
 .progress {
   font-size: 14px;
   font-weight: 300;
@@ -130,11 +144,29 @@ button {
   color: var(--light-gray);
 }
 
+.progress::selection {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+body.dark .progress {
+  color: var(--dark-gray);
+}
+
 .user-input {
   background-color: var(--light-color);
   height: 40px;
   font-size: 35px;
   font-weight: 300;
+}
+
+.user-input::selection {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+body.dark .user-input {
+  background-color: var(--dark-color);
 }
 
 /* Numpad Container */
@@ -161,6 +193,10 @@ button {
 
 .operator {
   color: var(--primary-color);
+}
+
+body.dark .operator {
+  background-color: var(--light-color);
 }
 
 /* Media queries - From Desktop to Mobile */
