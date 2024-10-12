@@ -5,11 +5,11 @@
 :root {
   /* Colors */
   --primary-color: #009788;
-  --secondary-color: #0A655E;
+  --secondary-color: #0a655e;
   --light-color: #f5f8f7;
   --dark-color: #283637;
-  --light-gray: #BAC9C9;
-  --dark-gray: #6D7F7F;
+  --light-gray: #bac9c9;
+  --dark-gray: #6d7f7f;
   /* --white-color: #ffffff;
   --black-color: #000000; */
 
@@ -83,7 +83,6 @@ button {
   font-weight: 500;
 }
 
-
 /* MAIN STYLE */
 .main {
   display: flex;
@@ -102,7 +101,7 @@ button {
 
 body.dark .calculator {
   background-color: var(--dark-color);
-  color: var(--light-color)
+  color: var(--light-color);
 }
 
 /* Header style */
@@ -136,7 +135,6 @@ body.dark .calculator {
   padding: var(--spacing-6) var(--spacing-6) var(--spacing-3) var(--spacing-6);
   position: relative;
 }
-
 
 .progress {
   font-size: 14px;
@@ -204,6 +202,10 @@ body.dark .operator,
 body.dark .equals,
 body.dark .percent {
   background-color: var(--light-color);
+}
+
+.period {
+  padding-bottom: var(--spacing-2);
 }
 
 /* Media queries - From Desktop to Mobile */

@@ -60,6 +60,9 @@ allInputs.forEach((el) => {
         userInput.innerText += e.target.innerText;
       }
       progress.innerText += e.target.innerText;
+    } else if (e.target.classList.contains("period")) {
+      userInput.innerText += e.target.innerText;
+      progress.innerText += e.target.innerText;
     } else if (e.target.classList.contains("operator")) {
       if (calculated(completeExpresion)) {
         progress.innerText = previousResult;
