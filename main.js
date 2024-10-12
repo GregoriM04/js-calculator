@@ -41,7 +41,7 @@ let previousResult = "";
 allInputs.forEach((el) => {
   el.addEventListener("click", (e) => {
     let result = "";
-    
+
     if (e.target.classList.contains("reset")) {
       userInput.innerText = 0;
       progress.innerText = "";
@@ -61,13 +61,13 @@ allInputs.forEach((el) => {
       }
       progress.innerText += e.target.innerText;
     } else if (e.target.classList.contains("operator")) {
-        if(calculated(completeExpresion)) {
-            progress.innerText = previousResult;
-        }
-        progress.innerText += e.target.innerText;
-        userInput.innerText = 0;
-        completeExpresion = "";
-        previousResult = "";
+      if (calculated(completeExpresion)) {
+        progress.innerText = previousResult;
+      }
+      progress.innerText += e.target.innerText;
+      userInput.innerText = 0;
+      completeExpresion = "";
+      previousResult = "";
     } else if (e.target.classList.contains("equals")) {
       progress.innerText += e.target.innerText;
       let readyToCalc = progress.innerText.slice(
@@ -75,21 +75,19 @@ allInputs.forEach((el) => {
         progress.innerText.length - 1
       );
 
-    //   get the result
+      //   get the result
       result += calculate(readyToCalc);
-      
-    //   populate labels with expresion and result
-        progress.innerText += result;
-      userInput.innerText = result;
 
-    //  saving expresion and result
-        completeExpresion += progress.innerText;
-        previousResult += result;
+      //   populate labels with expresion and result
+      progress.innerText += digitCounter(result);
+      userInput.innerText = digitCounter(result);
 
+      //  saving expresion and result
+      completeExpresion += progress.innerText;
+      previousResult += digitCounter(result);
     }
   });
 });
-
 
 // Function to calculate the user expresion
 function calculate(expression) {
@@ -156,8 +154,9 @@ function calculated(str) {
   return false;
 }
 
-// let strX = "8*10=80";
-// console.log(calculated(strX));
-
-// let strY = "8*1080";
-// console.log(calculated(strY))
+// Func to control how many digits are shown
+function digitCounter(str) {
+  // =< 10 digits
+  let reducedStr = str.slice(0, 10);
+  return reducedStr;
+}
