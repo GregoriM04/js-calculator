@@ -195,12 +195,14 @@ body.dark .user-input {
 }
 
 .operator,
-.equals {
+.equals,
+.percent {
   color: var(--primary-color);
 }
 
 body.dark .operator,
-body.dark .equals {
+body.dark .equals,
+body.dark .percent {
   background-color: var(--light-color);
 }
 

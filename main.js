@@ -68,6 +68,11 @@ allInputs.forEach((el) => {
       userInput.innerText = 0;
       completeExpresion = "";
       previousResult = "";
+    } else if (e.target.classList.contains("percent")) {
+      if (userInput.innerText != 0) {
+        progress.innerText = digitCounter(percentage(userInput.innerText));
+        userInput.innerText = digitCounter(percentage(userInput.innerText));
+      }
     } else if (e.target.classList.contains("equals")) {
       progress.innerText += e.target.innerText;
       let readyToCalc = progress.innerText.slice(
@@ -159,4 +164,14 @@ function digitCounter(str) {
   // =< 10 digits
   let reducedStr = str.slice(0, 10);
   return reducedStr;
+}
+
+// Func to get percentage from a given input
+function percentage(str) {
+  // conver string  to number and divide by 100
+  let number = parseFloat(str);
+  let newPercentage = number / 100;
+
+  // convert it back to str
+  return newPercentage.toString();
 }
