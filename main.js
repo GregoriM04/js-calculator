@@ -74,7 +74,18 @@ allInputs.forEach((el) => {
       if (calculated(completeExpresion)) {
         progress.innerText = previousResult;
       }
-      progress.innerText += e.target.innerText;
+      if (progress.innerText !== "") {
+        if (
+          e.target.classList.contains("multiply") ||
+          e.target.classList.contains("divide")
+        ) {
+          if (!operatorChecker(progress.innerText)) {
+            progress.innerText += e.target.innerText;
+          }
+        } else {
+          progress.innerText += e.target.innerText;
+        }
+      }
       userInput.innerText = 0;
       completeExpresion = "";
       previousResult = "";
@@ -84,22 +95,24 @@ allInputs.forEach((el) => {
         userInput.innerText = digitCounter(percentage(userInput.innerText));
       }
     } else if (e.target.classList.contains("equals")) {
-      progress.innerText += e.target.innerText;
-      let readyToCalc = progress.innerText.slice(
-        0,
-        progress.innerText.length - 1
-      );
+      if (progress.innerText !== "") {
+        progress.innerText += e.target.innerText;
+        let readyToCalc = progress.innerText.slice(
+          0,
+          progress.innerText.length - 1
+        );
 
-      //   get the result
-      result += calculate(readyToCalc);
+        //   get the result
+        result += calculate(readyToCalc);
 
-      //   populate labels with expresion and result
-      progress.innerText += digitCounter(result);
-      userInput.innerText = digitCounter(result);
+        //   populate labels with expresion and result
+        progress.innerText += digitCounter(result);
+        userInput.innerText = digitCounter(result);
 
-      //  saving expresion and result
-      completeExpresion += progress.innerText;
-      previousResult += digitCounter(result);
+        //  saving expresion and result
+        completeExpresion += progress.innerText;
+        previousResult += digitCounter(result);
+      }
     }
   });
 });
@@ -207,4 +220,19 @@ function integerizer(str) {
   }
 
   return number.join("");
+}
+
+// Func to check operators (*|/)
+function operatorChecker(str) {
+  let input = str.split("");
+  let lastValue = input[input.length - 1];
+  let boolean;
+
+  if (lastValue === "*" || lastValue === "/") {
+    boolean = true;
+  } else {
+    boolean = false;
+  }
+
+  return boolean;
 }
