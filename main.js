@@ -53,13 +53,20 @@ allInputs.forEach((el) => {
         0,
         progress.innerText.length - 1
       );
+    } else if (e.target.classList.contains("inverter")) {
+      progress.innerText = integerizer(userInput.innerText);
+      userInput.innerText = integerizer(userInput.innerText);
     } else if (e.target.classList.contains("number")) {
-      if (userInput.innerText == 0) {
+      if (userInput.innerText == "0") {
         userInput.innerText = e.target.innerText;
+        progress.innerText += e.target.innerText;
+      } else if (userInput.innerText == "-0") {
+        userInput.innerText = "-" + e.target.innerText;
+        progress.innerText = userInput.innerText;
       } else {
         userInput.innerText += e.target.innerText;
+        progress.innerText += e.target.innerText;
       }
-      progress.innerText += e.target.innerText;
     } else if (e.target.classList.contains("period")) {
       userInput.innerText += e.target.innerText;
       progress.innerText += e.target.innerText;
@@ -177,4 +184,27 @@ function percentage(str) {
 
   // convert it back to str
   return newPercentage.toString();
+}
+
+// Func to change signs (+/-)
+function integerizer(str) {
+  let number = str.split("");
+  let boolean;
+
+  // Check if "-" is in the operation
+  number.find((el) => {
+    if (el == "-") {
+      boolean = true;
+    }
+  });
+
+  if (!boolean) {
+    // number is posible, so add "-"
+    number.unshift("-");
+  } else {
+    // number is negative, do remove "-"
+    number.shift();
+  }
+
+  return number.join("");
 }
