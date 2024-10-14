@@ -10,8 +10,8 @@
   --dark-color: #283637;
   --light-gray: #bac9c9;
   --dark-gray: #6d7f7f;
-  /* --white-color: #ffffff;
-  --black-color: #000000; */
+  --white-color: #ffffff;
+  /* --black-color: #000000; */
 
   /* fonts */
   --primary-font: "Poppins", sans-serif;
@@ -89,6 +89,19 @@ button {
   justify-content: center;
   align-items: center;
   margin-top: var(--spacing-7);
+  position: relative;
+}
+
+.popup {
+  position: absolute;
+  top: 30%;
+  color: var(--primary-color);
+  display: none;
+  pointer-events: none;
+}
+
+body.dark .popup {
+  color: var(--white-color);
 }
 
 .calculator {
@@ -160,6 +173,7 @@ body.dark .progress {
   height: 40px;
   font-size: 35px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .user-input::selection {
@@ -227,6 +241,24 @@ body.dark .percent {
 body.dark .numpad-container .input:hover {
   background-color: var(--light-gray);
   transition: var(--trans-3s);
+}
+
+/* Animations */
+.fadein {
+  animation: fade-in 500ms ease 0ms 1 normal forwards;
+}
+
+/* Keyframes */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Media queries - From Desktop to Mobile */

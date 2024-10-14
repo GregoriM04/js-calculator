@@ -33,6 +33,7 @@ const userInput = document.getElementById("user-input");
 const resetBtn = document.querySelector(".reset");
 const eraserBtn = document.querySelector(".eraser");
 const allInputs = document.querySelectorAll("#numpad-container .input");
+const popup = document.getElementById("popup");
 
 // Store expresion and result after calculate() ran
 let completeExpresion = "";
@@ -238,3 +239,16 @@ function operatorChecker(str) {
 
   return boolean;
 }
+
+// Copy result to the clipboard
+userInput.addEventListener("click", () => {
+  navigator.clipboard.writeText(userInput.innerText);
+
+  //feedback animation
+  popup.style.display = "block";
+  popup.classList.add("fadein");
+  setTimeout(() => {
+    popup.style.display = "none";
+    popup.classList.remove("fadein");
+  }, 1000);
+});
