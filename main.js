@@ -34,11 +34,13 @@ const resetBtn = document.querySelector(".reset");
 const eraserBtn = document.querySelector(".eraser");
 const allInputs = document.querySelectorAll("#numpad-container .input");
 
-// Store expresion and result when calculated
+// Store expresion and result after calculate() ran
 let completeExpresion = "";
 let previousResult = "";
 
+// Iterate though all all inputs in the pad
 allInputs.forEach((el) => {
+  //checking which button is pressed
   el.addEventListener("click", (e) => {
     let result = "";
 
@@ -102,14 +104,14 @@ allInputs.forEach((el) => {
           progress.innerText.length - 1
         );
 
-        //   get the result
+        //get the result
         result += calculate(readyToCalc);
 
-        //   populate labels with expresion and result
+        //populate labels with expresion and result
         progress.innerText += digitCounter(result);
         userInput.innerText = digitCounter(result);
 
-        //  saving expresion and result
+        //saving expresion and result
         completeExpresion += progress.innerText;
         previousResult += digitCounter(result);
       }
@@ -165,7 +167,7 @@ function calculate(expression) {
   });
 }
 
-// Func to check if the operation has been made so you can do another one with the previous result
+// Func to check if the operation has been made
 function calculated(str) {
   let previousCalc = str.split("");
   let foundSome = "";
@@ -191,20 +193,20 @@ function digitCounter(str) {
 
 // Func to get percentage from a given input
 function percentage(str) {
-  // conver string  to number and divide by 100
+  //conver string  to number and divide by 100
   let number = parseFloat(str);
   let newPercentage = number / 100;
 
-  // convert it back to str
+  //convert it back to str
   return newPercentage.toString();
 }
 
-// Func to change signs (+/-)
+// Func to change signs (+||-)
 function integerizer(str) {
   let number = str.split("");
   let boolean;
 
-  // Check if "-" is in the operation
+  //check if "-" is in the operation
   number.find((el) => {
     if (el == "-") {
       boolean = true;
@@ -212,17 +214,17 @@ function integerizer(str) {
   });
 
   if (!boolean) {
-    // number is posible, so add "-"
+    //number is posible, add "-"
     number.unshift("-");
   } else {
-    // number is negative, do remove "-"
+    //number is negative, remove "-"
     number.shift();
   }
 
   return number.join("");
 }
 
-// Func to check operators (*|/)
+// Func to check operators (*||/)
 function operatorChecker(str) {
   let input = str.split("");
   let lastValue = input[input.length - 1];
