@@ -97,6 +97,7 @@ button {
   min-width: 300px;
   width: clamp(300px, 20%, 301px);
   border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
 body.dark .calculator {
@@ -198,6 +199,10 @@ body.dark .user-input {
   color: var(--primary-color);
 }
 
+.eraser {
+  padding-bottom: var(--spacing-1);
+}
+
 body.dark .operator,
 body.dark .equals,
 body.dark .percent {
@@ -206,6 +211,22 @@ body.dark .percent {
 
 .period {
   padding-bottom: var(--spacing-2);
+}
+
+.numpad-container .input:active {
+  transform: scale(0.9);
+}
+
+/* Hover effect */
+.numpad-container .input:hover {
+  background-color: var(--dark-gray);
+  color: var(--light-color);
+  transition: var(--trans-3s);
+}
+
+body.dark .numpad-container .input:hover {
+  background-color: var(--light-gray);
+  transition: var(--trans-3s);
 }
 
 /* Media queries - From Desktop to Mobile */
